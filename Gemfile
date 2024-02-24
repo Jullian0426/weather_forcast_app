@@ -60,3 +60,26 @@ group :development do
   # gem "spring"
 end
 
+
+gem "devise", "~> 4.9"
+
+gem "httparty", "~> 0.21.0"
+
+gem "dotenv-rails", "~> 3.0", groups: [:development, :test]
+
+# For RSpec
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+end
+
+# For feature tests
+group :test do
+  gem 'capybara'
+  gem 'vcr'
+  gem 'webmock'
+end
+
+# For charts
+gem 'chartkick'
