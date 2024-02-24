@@ -1,9 +1,0 @@
-<%= form_with url: weather_search_path, method: :get, id: "weather_form", data: { turbo_frame: "weather" }, local: false do |form| %>
-  <%= form.label :location, "Enter Location:" %>
-  <%= form.text_field :location %>
-  <%= form.submit "Get Forecast" %>
-<% end %>
-
-<turbo-frame id="weather">
-  <!-- The weather forecast will be dynamically loaded here -->
-</turbo-frame>

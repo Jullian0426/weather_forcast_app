@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "home#index"
+  root "locations#index"
 
-  get 'weather_search', to: 'forecasts#search'
-
-  resources :locations
+  resources :locations, only: [:index, :new, :create, :destroy]
 end
