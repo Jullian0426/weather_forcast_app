@@ -84,3 +84,4 @@ end
 
 # For charts
 gem 'chartkick'
+gem "selenium-webdriver", "~> 4.18"
