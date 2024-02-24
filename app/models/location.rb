@@ -4,4 +4,5 @@ class Location < ApplicationRecord
 
   # Validations
   validates :name, presence: true
+  validates :forecast, presence: true
 end

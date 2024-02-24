@@ -10,4 +10,9 @@ RSpec.describe User, type: :model do
     user = User.new(email: nil, password: 'password')
     expect(user).not_to be_valid
   end
+
+  it "has many locations" do
+    association = described_class.reflect_on_association(:locations)
+    expect(association.macro).to eq :has_many
+  end
 end
