@@ -1,3 +1,11 @@
+<h1>Weather Forcasting App!</h1>
+
+<% if user_signed_in? %>
+  <div class="sign-out-btn-container">
+    <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, form_class: "d-inline" %>
+  </div>
+<% end %>
+
 <%= form_with model: Location.new, id: "new_location_form", data: { turbo_frame: "weather" } do |form| %>
   <%= form.label :name, "Enter Location:" %>
   <%= form.text_field :name %>

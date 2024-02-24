@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ .sign-out-btn-container {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 1000; /* Ensure it appears above other content */
+}
