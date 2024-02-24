@@ -76,6 +76,7 @@ end
 
 # For feature tests
 group :test do
+  gem 'rails-controller-testing'
   gem 'capybara'
   gem 'vcr'
   gem 'webmock'

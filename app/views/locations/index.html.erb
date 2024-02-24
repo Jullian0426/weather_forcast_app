@@ -1,0 +1,10 @@
+<%= form_with model: Location.new, id: "new_location_form", data: { turbo_frame: "weather" } do |form| %>
+  <%= form.label :name, "Enter Location:" %>
+  <%= form.text_field :name %>
+  
+  <%= form.submit "Save and Get Forecast" %>
+<% end %>
+
+<turbo-frame id="locations">
+  <%= render @locations %>
+</turbo-frame>
