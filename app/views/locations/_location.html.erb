@@ -2,15 +2,14 @@
   <h3><%= location.name %></h3>
 
   <% if location.forecast.present? %>
-    <% high_lows = location.forecast['daily']['time'].each_with_index.map do |day, index| 
-        [
-          day, 
-          [location.forecast['daily']['temperature_2m_min'][index], 
-          location.forecast['daily']['temperature_2m_max'][index]]
-        ] 
-      end
-    %>
-    <%= line_chart high_lows, ytitle: "Temperature (°C)", xtitle: "Day", discrete: true %>
+    <% days = location.forecast['daily']['time'] %>
+    <% highs = location.forecast['daily']['temperature_2m_max'].map.with_index { |temp, index| [days[index], temp] } %>
+    <% lows = location.forecast['daily']['temperature_2m_min'].map.with_index { |temp, index| [days[index], temp] } %>
+    
+    <%= line_chart [
+        {name: "Highs", data: highs},
+        {name: "Lows", data: lows}
+      ], ytitle: "Temperature (°C)", xtitle: "Day", discrete: true, id: "chart-#{location.id}" %>
   <% else %>
     <p>Weather information is not available.</p>
   <% end %>

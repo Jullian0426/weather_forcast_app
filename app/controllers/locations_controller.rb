@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
       forecast_data = get_forecast_for(coordinates)
       if forecast_data
         @location = current_user.locations.create(
-          name: @location_name,
+          name: coordinates[:name],
           forecast: forecast_data
         )
   
@@ -62,7 +62,8 @@ class LocationsController < ApplicationController
       if json["results"].present?
         latitude = json["results"].first["latitude"]
         longitude = json["results"].first["longitude"]
-        { lat: latitude, lon: longitude }
+        name = json["results"].first["name"]
+        { lat: latitude, lon: longitude, name: name }
       else
         Rails.logger.info "No geocoding results found for #{location_name}"
         nil
