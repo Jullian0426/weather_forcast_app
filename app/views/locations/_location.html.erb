@@ -1,16 +1,16 @@
 <div id="location-<%= location.id %>">
   <h3><%= location.name %></h3>
 
-  <% if location.forecast_data.present? %>
-    <% high_lows = location.forecast_data['daily']['time'].each_with_index.map do |day, index| 
+  <% if location.forecast.present? %>
+    <% high_lows = location.forecast['daily']['time'].each_with_index.map do |day, index| 
         [
           day, 
-          [location.forecast_data['daily']['temperature_2m_min'][index], 
-          location.forecast_data['daily']['temperature_2m_max'][index]]
+          [location.forecast['daily']['temperature_2m_min'][index], 
+          location.forecast['daily']['temperature_2m_max'][index]]
         ] 
       end
     %>
-    <%= line_chart high_lows, ytitle: "Temperature (°C)", xtitle: "Day", discrete: true, library: {scales: {yAxes: [{ticks: {beginAtZero: true}}]}} %>
+    <%= line_chart high_lows, ytitle: "Temperature (°C)", xtitle: "Day", discrete: true %>
   <% else %>
     <p>Weather information is not available.</p>
   <% end %>
